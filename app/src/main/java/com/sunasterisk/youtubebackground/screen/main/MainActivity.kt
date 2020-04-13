@@ -1,7 +1,8 @@
-package com.sunasterisk.youtubebackground
+package com.sunasterisk.youtubebackground.screen.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.sunasterisk.youtubebackground.R
 
 class MainActivity : AppCompatActivity() {
 
