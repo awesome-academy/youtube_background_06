@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">YoutubeBackGround</string>
+    <string name="app_name"></string>
+    <string name="search">Search</string>
+    <string name="menu">Menu</string>
+    <string name="youtube">Youtube</string>
+    <string name="logoyoutube">logoYoutube</string>
 </resources>
