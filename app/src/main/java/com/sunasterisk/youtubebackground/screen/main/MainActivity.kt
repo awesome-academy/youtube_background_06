@@ -1,14 +1,12 @@
 package com.sunasterisk.youtubebackground.screen.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.sunasterisk.youtubebackground.R
 import com.sunasterisk.youtubebackground.screen.fragment.colectiontrending.ColectionTrendingFragment
 import com.sunasterisk.youtubebackground.screen.fragment.home.HomeFragment
