@@ -1,8 +1,6 @@
 package com.sunasterisk.youtubebackground.data.source.remote.fetchjson
 
 import android.os.AsyncTask
-import android.os.Debug
-import android.util.Log
 import com.sunasterisk.youtubebackground.data.source.remote.OnFetchDataJsonListener
 import org.json.JSONObject
 

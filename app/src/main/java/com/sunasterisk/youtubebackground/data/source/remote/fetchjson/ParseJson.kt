@@ -13,20 +13,26 @@ class ParseJson {
         videos = videosParseJson(jsonObject.getJSONArray(PageEntry.ITEMS))
     )
 
-    fun  videosParseJson(jsonArray: JSONArray): MutableList<Video>? {
-        var listVideo = mutableListOf<Video>()
-        for (item in 0..jsonArray.length() - 1) {
-            listVideo.add(
+    fun videosParseJson(jsonArray: JSONArray): MutableList<Video>? {
+        val videos = mutableListOf<Video>()
+        for (item in 0 until jsonArray.length()) {
+            videos.add(
                 Video(
                     jsonArray.getJSONObject(item).getString(VideoEntry.ETAG),
                     jsonArray.getJSONObject(item).getString(VideoEntry.ID),
-                    snippetParseJson(jsonArray.getJSONObject(item).getJSONObject(VideoEntry.SNIPPET)),
-                    contentDetailParseJson(jsonArray.getJSONObject(item).getJSONObject(VideoEntry.CONTENT_DETAILS)),
-                    statisticParseJson(jsonArray.getJSONObject(item).getJSONObject(VideoEntry.STATISTICS))
+                    snippetParseJson(
+                        jsonArray.getJSONObject(item).getJSONObject(VideoEntry.SNIPPET)
+                    ),
+                    contentDetailParseJson(
+                        jsonArray.getJSONObject(item).getJSONObject(VideoEntry.CONTENT_DETAILS)
+                    ),
+                    statisticParseJson(
+                        jsonArray.getJSONObject(item).getJSONObject(VideoEntry.STATISTICS)
+                    )
                 )
             )
         }
-        return listVideo
+        return videos
     }
 
     private fun statisticParseJson(jsonObject: JSONObject) = Statistic(
@@ -50,8 +56,7 @@ class ParseJson {
         thumbnailSizeParsejson(jsonObject.getJSONObject(ThumbnailEntry.DEFAULT)),
         thumbnailSizeParsejson(jsonObject.getJSONObject(ThumbnailEntry.MEDIUM)),
         thumbnailSizeParsejson(jsonObject.getJSONObject(ThumbnailEntry.HIGH)),
-        thumbnailSizeParsejson(jsonObject.getJSONObject(ThumbnailEntry.STANDARD)),
-        thumbnailSizeParsejson(jsonObject.getJSONObject(ThumbnailEntry.MAXRES))
+        thumbnailSizeParsejson(jsonObject.getJSONObject(ThumbnailEntry.STANDARD))
     )
 
     fun thumbnailSizeParsejson(jsonObject: JSONObject) = ThumbnailSize(

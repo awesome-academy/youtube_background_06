@@ -8,8 +8,7 @@ data class Thumbnail (
     var default: ThumbnailSize?,
     var medium: ThumbnailSize?,
     var high: ThumbnailSize?,
-    var standard: ThumbnailSize?,
-    var maxRes: ThumbnailSize?
+    var standard: ThumbnailSize?
 ) : Parcelable
 
 @Parcelize
@@ -25,7 +24,6 @@ object ThumbnailEntry {
     const val MEDIUM = "medium"
     const val HIGH = "high"
     const val STANDARD = "standard"
-    const val MAXRES = "maxres"
 }
 
 object ThumnailSizeEntry {

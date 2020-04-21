@@ -21,7 +21,6 @@ class VideoRemoteDataSource private constructor() : VideoDataSource.Remote {
         var url = Constants.BASE_URL + Constants.PATH_VIDEO + Constants.PART +
                   Constants.PART_TYPE + Constants.CHART + Constants.MOST_POPULAR +
                   Constants.MAX_RESULT + Constants.REGION_CODE + Constants.YOUTUBE_API_KEY
-
         if (category != null) {
             url = url + Constants.VIDEO_CATEGORIES + category
         }
