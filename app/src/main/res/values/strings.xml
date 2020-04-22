@@ -8,4 +8,8 @@
     <string name="trendingPage">Trending</string>
     <string name="musicPage">Music Trending</string>
     <string name="gamingPage">Gaming Trending</string>
+    <string name="share">Share</string>
+    <string name="loop">Loop</string>
+    <string name="next">Next</string>
+    <string name="autoNext">AutoNext</string>
 </resources>
