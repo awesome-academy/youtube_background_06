@@ -1,12 +1,15 @@
-package com.sunasterisk.youtubebackground.screen.main
+package com.sunasterisk.youtubebackground.screen.fragment.colectiontrending
 
 import com.sunasterisk.youtubebackground.data.model.Page
 import com.sunasterisk.youtubebackground.data.source.VideoRepository
 import com.sunasterisk.youtubebackground.data.source.remote.OnFetchDataJsonListener
+import com.sunasterisk.youtubebackground.screen.main.HomeContract
 
-class HomePresenter(private val repository: VideoRepository?) : HomeContract.Presenter {
+class CollectionTrendingPresenter(
+    private val repository: VideoRepository?
+) : CollectionTrendingContract.Presenter {
 
-    private var view: HomeContract.View? = null
+    private var view: CollectionTrendingContract.View? = null
 
     override fun getPageByCategory(category: String?) {
         repository?.getPageByCategory(category, object : OnFetchDataJsonListener<Page> {
@@ -27,7 +30,7 @@ class HomePresenter(private val repository: VideoRepository?) : HomeContract.Pre
     override fun onStop() {
     }
 
-    override fun setView(view: HomeContract.View) {
+    override fun setView(view: CollectionTrendingContract.View) {
         this.view = view
     }
 }

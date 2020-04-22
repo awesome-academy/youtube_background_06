@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.sunasterisk.youtubebackground.R
-import com.sunasterisk.youtubebackground.screen.fragment.colectiontrending.ColectionTrendingFragment
+import com.sunasterisk.youtubebackground.screen.fragment.colectiontrending.CollectionTrendingFragment
 import com.sunasterisk.youtubebackground.screen.fragment.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         val fragment: Fragment? = when (view.id) {
             R.id.buttonHome -> HomeFragment.newInstance()
-            R.id.buttonTrending -> ColectionTrendingFragment.newInstance()
+            R.id.buttonTrending -> CollectionTrendingFragment.newInstance()
             else -> null
         }
 

@@ -43,10 +43,6 @@ class HomeFragment : Fragment(), HomeContract.View {
         recyclerHome.adapter = adapter
     }
 
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
-
     override fun getPageSuccess(page: Page) {
         page.videos?.let {
             adapter.updateData(it)
@@ -57,5 +53,9 @@ class HomeFragment : Fragment(), HomeContract.View {
         this.context?.let {
             Toast.makeText(it, R.string.errorLoad, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    companion object {
+        fun newInstance() = HomeFragment()
     }
 }
