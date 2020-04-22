@@ -5,4 +5,7 @@
     <string name="youtube">Youtube</string>
     <string name="logoyoutube">logoYoutube</string>
     <string name="errorLoad">Can\'t load your page</string>
+    <string name="trendingPage">Trending</string>
+    <string name="musicPage">Music Trending</string>
+    <string name="gamingPage">Gaming Trending</string>
 </resources>
