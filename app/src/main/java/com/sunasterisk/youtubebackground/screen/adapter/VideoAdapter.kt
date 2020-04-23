@@ -8,17 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sunasterisk.youtubebackground.R
 import com.sunasterisk.youtubebackground.data.model.Video
 import com.sunasterisk.youtubebackground.utils.LoadImageHelper
+import com.sunasterisk.youtubebackground.utils.OnItemRecyclerViewClickListener
 import com.sunasterisk.youtubebackground.utils.OnLoadImageListener
 import com.sunasterisk.youtubebackground.utils.VideoUtils
 import kotlinx.android.synthetic.main.single_video_item.view.*
 
 class VideoAdapter() : RecyclerView.Adapter<VideoAdapter.ViewHolder>() {
 
+    private var onItemClickListener: OnItemRecyclerViewClickListener? = null
     private val listVideos = mutableListOf<Video>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoAdapter.ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.single_video_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.single_video_item, parent, false),
+            onItemClickListener
         )
     }
 
@@ -36,7 +39,22 @@ class VideoAdapter() : RecyclerView.Adapter<VideoAdapter.ViewHolder>() {
         }
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), OnLoadImageListener {
+    fun registerItemRecyclerViewClickListener(
+        onItemRecyclerViewClickListener: OnItemRecyclerViewClickListener?
+    ) {
+        onItemClickListener = onItemRecyclerViewClickListener
+    }
+
+    class ViewHolder(
+        itemView: View,
+        private val itemListener: OnItemRecyclerViewClickListener?
+    ) : RecyclerView.ViewHolder(itemView),
+        OnLoadImageListener,
+        View.OnClickListener {
+
+        init {
+            itemView.setOnClickListener(this)
+        }
 
         fun bindData(video: Video) {
             LoadImageHelper(this).execute(video.snippet?.thumbnail?.high?.url)
@@ -52,6 +70,10 @@ class VideoAdapter() : RecyclerView.Adapter<VideoAdapter.ViewHolder>() {
 
         override fun onLoadFail(exception: Exception?) {
             exception?.printStackTrace()
+        }
+
+        override fun onClick(view: View?) {
+            itemListener?.onItemClickListener(adapterPosition)
         }
     }
 }
