@@ -1,15 +1,19 @@
 package com.sunasterisk.youtubebackground.screen.main
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.sunasterisk.youtubebackground.R
 import com.sunasterisk.youtubebackground.screen.fragment.colectiontrending.CollectionTrendingFragment
 import com.sunasterisk.youtubebackground.screen.fragment.home.HomeFragment
+import com.sunasterisk.youtubebackground.screen.fragment.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -30,11 +34,31 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.top_bar_menu, menu)
+
+        val manage = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = menu?.findItem(R.id.iconSearch)?.actionView as SearchView
+        searchView.setSearchableInfo(manage.getSearchableInfo(componentName))
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                query?.let {
+                    val fragment = SearchFragment.newInstance(it)
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameContent, fragment)
+                        .addToBackStack(null)
+                        .commit()
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?) = true
+        })
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.iconMenu -> iconMenuOnClick()
         }
         return true
@@ -45,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount > 1){
+        if (supportFragmentManager.backStackEntryCount > 1) {
             supportFragmentManager.popBackStack()
         }
     }

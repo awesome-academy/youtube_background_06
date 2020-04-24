@@ -4,8 +4,10 @@ import android.os.AsyncTask
 import com.sunasterisk.youtubebackground.data.source.remote.OnFetchDataJsonListener
 import org.json.JSONObject
 
-class GetJsonFromUrl<T> constructor(private val listener: OnFetchDataJsonListener<T>,
-                                    private val keyEntity: String) : AsyncTask<String?, Void?, String?>() {
+class GetJsonFromUrl<T> (
+    private val listener: OnFetchDataJsonListener<T>,
+    private val keyEntity: String
+) : AsyncTask<String?, Void?, String?>() {
 
     private var exception: Exception? = null
 

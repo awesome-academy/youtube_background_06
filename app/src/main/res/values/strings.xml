@@ -13,4 +13,5 @@
     <string name="next">Next</string>
     <string name="autoNext">AutoNext</string>
     <string name="error">ERROR</string>
+    <string name="resultFor">Result For: </string>
 </resources>

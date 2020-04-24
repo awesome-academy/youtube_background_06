@@ -12,10 +12,17 @@ data class Video(
     val statistic: Statistic? = null
 ) : Parcelable
 
+@Parcelize
+data class SearchVideo(
+    val eTag: String? = "",
+    val searchSnippet: SearchSnippet?
+) : Parcelable
+
 object VideoEntry {
     const val ETAG = "etag"
     const val ID = "id"
     const val SNIPPET = "snippet"
     const val CONTENT_DETAILS = "contentDetails"
     const val STATISTICS = "statistics"
+    const val VIDEO_ID = "videoId"
 }

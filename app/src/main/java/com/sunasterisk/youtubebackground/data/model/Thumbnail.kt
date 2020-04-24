@@ -4,12 +4,15 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Thumbnail (
+data class Thumbnail(
     var default: ThumbnailSize?,
     var medium: ThumbnailSize?,
     var high: ThumbnailSize?,
     var standard: ThumbnailSize?
 ) : Parcelable
+
+@Parcelize
+data class SearchThumbnail(val high: ThumbnailSize?) : Parcelable
 
 @Parcelize
 data class ThumbnailSize(

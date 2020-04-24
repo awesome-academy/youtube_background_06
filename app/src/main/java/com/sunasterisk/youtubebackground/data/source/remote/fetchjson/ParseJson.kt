@@ -13,6 +13,44 @@ class ParseJson {
         videos = videosParseJson(jsonObject.getJSONArray(PageEntry.ITEMS))
     )
 
+    public fun searchPageParseJson(jsonObject: JSONObject) = SearchPage(
+        kind = jsonObject.getString(PageEntry.KIND),
+        eTag = jsonObject.getString(PageEntry.ETAG),
+        nextPageToken = jsonObject.getString(PageEntry.NEXT_PAGE_TOKEN),
+        searchVideos = searchVideosParseJson(jsonObject.getJSONArray(PageEntry.ITEMS))
+    )
+
+    private fun searchVideosParseJson(jsonArray: JSONArray): MutableList<SearchVideo>? {
+        val searchVideos = mutableListOf<SearchVideo>()
+        for (item in 0 until jsonArray.length()) {
+            searchVideos.add(
+                SearchVideo(
+                    jsonArray.getJSONObject(item).getString(VideoEntry.ETAG),
+                    searchSnipperParseJson(
+                        jsonArray.getJSONObject(item).getJSONObject(VideoEntry.SNIPPET)
+                    )
+                )
+            )
+        }
+        return searchVideos
+    }
+
+    private fun searchSnipperParseJson(jsonObject: JSONObject) = SearchSnippet(
+        jsonObject.getString(SnippetEntry.PUBLISHE_AT),
+        jsonObject.getString(SnippetEntry.CHANNEL_ID),
+        jsonObject.getString(SnippetEntry.TITLE),
+        searchThumbnailParseJson(jsonObject.getJSONObject(SnippetEntry.THUMBNAILS)),
+        jsonObject.getString(SnippetEntry.CHANNEL_TITLE)
+    )
+
+    private fun searchThumbnailParseJson(jsonObject: JSONObject) = SearchThumbnail(
+        searchThumbSizeParseJson(jsonObject.getJSONObject(ThumbnailEntry.HIGH))
+    )
+
+    private fun searchThumbSizeParseJson(jsonObject: JSONObject) = ThumbnailSize(
+        jsonObject.getString(ThumnailSizeEntry.URL)
+    )
+
     fun videosParseJson(jsonArray: JSONArray): MutableList<Video>? {
         val videos = mutableListOf<Video>()
         for (item in 0 until jsonArray.length()) {

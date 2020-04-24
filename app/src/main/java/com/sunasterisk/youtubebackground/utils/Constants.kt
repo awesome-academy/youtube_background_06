@@ -10,6 +10,7 @@ object Constants {
     const val REGION_CODE = "&regionCode=vn"
     const val PART_TYPE = "snippet%2CcontentDetails%2Cstatistics"
     const val PATH_VIDEO = "videos?"
+    const val PATH_SEARCH = "search?"
     const val VIDEO_CATEGORIES = "&videoCategoryId="
     const val MAX_RESULT = "&maxResults=20"
     const val MOST_POPULAR = "mostPopular"
@@ -18,4 +19,8 @@ object Constants {
     const val EXTRA_POSITION = "POSITION"
     const val EXTRA_VIDEOS = "VIDEOS"
     const val EXTRA_VIEW = "VIEW"
+    const val PART_TYPE_SEARCH = "snippet"
+    const val ORDER = "&order=relevance"
+    const val QUERY = "&q="
+    const val KEY_QUERY = "QUERY"
 }
