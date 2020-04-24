@@ -38,6 +38,9 @@ class ParseDataWithJson {
                     PageEntry.PAGE -> {
                         return ParseJson().pageParseJson(it)
                     }
+                    PageEntry.SEARCH -> {
+                        return ParseJson().searchPageParseJson(it)
+                    }
                     else -> null
                 }
             }

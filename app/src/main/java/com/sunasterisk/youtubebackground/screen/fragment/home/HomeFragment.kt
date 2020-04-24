@@ -35,8 +35,8 @@ class HomeFragment : Fragment(), HomeContract.View, OnItemRecyclerViewClickListe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initData()
         initView()
+        initData()
     }
 
     private fun initData() {

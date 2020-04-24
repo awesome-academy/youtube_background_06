@@ -5,11 +5,20 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-data class Snippet (
+data class Snippet(
     val publishedAt: String = "",
     val channelId: String = "",
     val title: String = "",
     val thumbnail: Thumbnail?,
+    val channelTitle: String = ""
+) : Parcelable
+
+@Parcelize
+data class SearchSnippet(
+    val publishedAt: String = "",
+    val channelId: String = "",
+    val title: String = "",
+    val searchThumn: SearchThumbnail?,
     val channelTitle: String = ""
 ) : Parcelable
 
