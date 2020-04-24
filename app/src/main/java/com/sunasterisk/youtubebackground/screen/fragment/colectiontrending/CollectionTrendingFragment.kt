@@ -1,20 +1,30 @@
 package com.sunasterisk.youtubebackground.screen.fragment.colectiontrending
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.sunasterisk.youtubebackground.R
 import com.sunasterisk.youtubebackground.data.model.Page
+import com.sunasterisk.youtubebackground.data.model.Video
 import com.sunasterisk.youtubebackground.data.source.VideoRepository
 import com.sunasterisk.youtubebackground.screen.adapter.VideoAdapter
+import com.sunasterisk.youtubebackground.screen.video.VideoActivity
+import com.sunasterisk.youtubebackground.utils.Constants
+import com.sunasterisk.youtubebackground.utils.OnItemRecyclerViewClickListener
 import com.sunasterisk.youtubebackground.utils.VideoCategoryId
 import kotlinx.android.synthetic.main.fragment_colection_trending.*
 
-class CollectionTrendingFragment : Fragment(), CollectionTrendingContract.View, View.OnClickListener{
+class CollectionTrendingFragment : Fragment(),
+    CollectionTrendingContract.View,
+    View.OnClickListener,
+    OnItemRecyclerViewClickListener {
 
+    private var page: Page? = null
     private val adapter: VideoAdapter by lazy { VideoAdapter() }
 
     override fun onCreateView(
@@ -46,9 +56,11 @@ class CollectionTrendingFragment : Fragment(), CollectionTrendingContract.View, 
     private fun initView() {
         recyclerTrendingContent.setHasFixedSize(true)
         recyclerTrendingContent.adapter = adapter
+        adapter.registerItemRecyclerViewClickListener(this)
     }
 
     override fun getPageSuccess(page: Page) {
+        this.page = page
         page.videos?.let {
             adapter.updateData(it)
             adapter.notifyDataSetChanged()
@@ -78,6 +90,12 @@ class CollectionTrendingFragment : Fragment(), CollectionTrendingContract.View, 
                 initData(VideoCategoryId.MUSIC.category)
                 initView()
             }
+        }
+    }
+
+    override fun onItemClickListener(item: Int) {
+        activity?.let {
+            startActivity(VideoActivity.getIntent(it, item, page))
         }
     }
 

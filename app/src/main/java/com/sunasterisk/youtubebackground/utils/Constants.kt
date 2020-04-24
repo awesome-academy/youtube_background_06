@@ -13,4 +13,9 @@ object Constants {
     const val VIDEO_CATEGORIES = "&videoCategoryId="
     const val MAX_RESULT = "&maxResults=20"
     const val MOST_POPULAR = "mostPopular"
+    const val EXTRA_VIDEO = "VIDEO"
+    const val EXTRA_PAGE = "PAGE"
+    const val EXTRA_POSITION = "POSITION"
+    const val EXTRA_VIDEOS = "VIDEOS"
+    const val EXTRA_VIEW = "VIEW"
 }
